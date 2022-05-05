@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  ceiling-led-panel:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+
+
+    container_name: ceiling-led-panel
+
+    privileged: true
+    restart: always
+
+    devices:
+    # GPIO
+      - /sys:/sys:rwm
+
+    volumes:
+        - ./conf/:/opt/mypanel-conf/
+        - ./icons/:/opt/mypanel-icons/
