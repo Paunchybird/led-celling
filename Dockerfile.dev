@@ -19,6 +19,9 @@ COPY icons/ /opt/mypanel-icons/
 COPY conf/ /opt/mypanel-conf/
 
 RUN cd /opt/led-matrix/ && \
+    make -C examples-api-use
+    
+RUN cd /opt/led-matrix/ && \
     make build-python PYTHON=$(command -v python3) && \
     make install-python PYTHON=$(command -v python3)
     
