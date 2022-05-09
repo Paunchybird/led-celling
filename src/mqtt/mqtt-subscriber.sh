@@ -33,7 +33,7 @@ do
         ;;
 
       Image-Display.py)
-        TMP="$ROUTE/${data[0]}.py  -i $ICONS${data[1]}" 
+        TMP="$ROUTE/${data[0]}.py  -i $ICONS${data[1]} -R ${data[2]%.*}" 
         $TMP > /dev/null 2>&1 &
         ;;
 

@@ -3,7 +3,7 @@
     "port": "1883",
     "topic": "images",
     "devicename": "display1",
-    "username": "display1",
+    "username": "displays",
     "password": "dummypass",
-	"clientid": "display1_bd8041d0cdf131a6ba4e5b3360b8bc5a"
+	"clientid": "display2_bd8041d0cdf131a6ba4e5b3360b8bc5a"
 }
