@@ -1,3 +1,4 @@
+
 #!/bin/bash
 export TERM=xterm
 ln -s /usr/bin/python3 /usr/bin/python
