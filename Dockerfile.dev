@@ -27,12 +27,5 @@ RUN cd /opt/led-matrix/ && \
     
 RUN python3 -m pip install requests
 
-HEALTHCHECK \
-    --interval=30s \
-    --timeout=10s \
-    --start-period=1m \
-    --retries=3 \
-  CMD /opt/healthcheck
-
 WORKDIR /opt
 ENTRYPOINT ["/bin/bash", "/opt/mqtt/entrypoint.sh"]

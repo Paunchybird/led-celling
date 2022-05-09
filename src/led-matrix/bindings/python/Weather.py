@@ -10,7 +10,9 @@ from PIL import Image
 class Weather(SampleBase):
     def __init__(self, *args, **kwargs):
         super(Weather, self).__init__(*args, **kwargs)
-    
+        self.parser.add_argument("-L", "--location",
+                                 help="City Location",
+                                 default="833")
     def run(self):
         while True:
             self.job()
@@ -24,7 +26,7 @@ class Weather(SampleBase):
     def job(self):
         matrix = self.matrix.CreateFrameCanvas()
         # Enter Location code found at: http://bulk.openweathermap.org/sample/city.list.json.gz
-        location = '6359395' 
+        location = self.args.location 
 
         # Include app id generated when you make you account at: http://openweathermap.org/api
         appid = '6d7153de1e09360852d7576b14eafa31'

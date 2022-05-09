@@ -2,16 +2,17 @@
 
 ROUTE="/opt/mypanel-conf"
 
-MQTT_SERVER=`cat $ROUTE/my-mqtt.json | jq '.server' -r`
-MQTT_PORT=`cat $ROUTE/my-mqtt.json | jq '.port' -r`
-MQTT_TOPIC=`cat $ROUTE/my-mqtt.json | jq '.topic' -r`
-MQTT_DEVICENAME=`cat $ROUTE/my-mqtt.json | jq '.devicename' -r`
-MQTT_USERNAME=`cat $ROUTE/my-mqtt.json | jq '.username' -r`
-MQTT_PASSWORD=`cat $ROUTE/my-mqtt.json | jq '.password' -r`
-MQTT_CLIENTID=`cat $ROUTE/my-mqtt.json | jq '.clientid' -r`
+SERVER=`cat $ROUTE/my-mqtt.json | jq '.server' -r`
+PORT=`cat $ROUTE/my-mqtt.json | jq '.port' -r`
+TOPIC=`cat $ROUTE/my-mqtt.json | jq '.topic' -r`
+DEVICENAME=`cat $ROUTE/my-mqtt.json | jq '.devicename' -r`
+USERNAME=`cat $ROUTE/my-mqtt.json | jq '.username' -r`
+PASSWORD=`cat $ROUTE/my-mqtt.json | jq '.password' -r`
+CLIENTID=`cat $ROUTE/my-mqtt.json | jq '.clientid' -r`
+LOCATION=`cat $ROUTE/my-mqtt.json | jq '.location' -r`
 
 ROUTE="/opt/led-matrix/bindings/python" 
-echo "Listening to topic: " "$MQTT_TOPIC/$MQTT_DEVICENAME"
+echo "Listening to topic: " "$TOPIC/$DEVICENAME"
 while read rawcmd;
 do
 
@@ -42,12 +43,15 @@ do
         $TMP > /dev/null 2>&1 &
         ;;
       
-      Weather.py | Clock.py)
+      Weather.py)
+        TMP="$ROUTE/${data[0]}.py -L $LOCATION" 
+        $TMP > /dev/null 2>&1 &
+        ;;
+      Clock.py)
         "$ROUTE/${data[0]}.py" > /dev/null 2>&1 &
         ;;
-
       *)
         echo -n "unknown"
         ;;
     esac
-done < <(mosquitto_sub -h $MQTT_SERVER -p $MQTT_PORT -u "$MQTT_USERNAME" -P "$MQTT_PASSWORD" -i $MQTT_CLIENTID -t "$MQTT_TOPIC/$MQTT_DEVICENAME" -q 1)
+done < <(mosquitto_sub -h $SERVER -p $PORT -u "$USERNAME" -P "$PASSWORD" -i $CLIENTID -t "$TOPIC/$DEVICENAME" -q 1)
