@@ -2,9 +2,13 @@ version: '3'
 
 services:
   ceiling-led-panel:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
+    
+    image: paunchybird/led-ceiling:new
+
+    # Uncomment to build local version
+    #build:
+     # context: .
+      #dockerfile: Dockerfile.dev
 
 
     container_name: ceiling-led-panel
@@ -19,3 +23,18 @@ services:
     volumes:
         - ./conf/:/opt/mypanel-conf/
         - ./icons/:/opt/mypanel-icons/
+        
+  # Used to auto-update images as we release new versions...
+  watchtower:
+    # Please see the following for configuration options:
+    #    https://containrrr.github.io/watchtower/container-selection/
+    image: containrrr/watchtower
+    container_name: watchtower
+
+    restart: always
+    privileged: true
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+    command: --interval 500
