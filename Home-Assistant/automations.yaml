@@ -1,0 +1,228 @@
+- id: '1648846106202'
+  alias: Battery above 95
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.battery_capacity1
+    above: '95'
+  condition: []
+  action:
+  - device_id: e55da39730293a0290b61e2b812bb1ed
+    domain: mobile_app
+    type: notify
+    message: 'Battery level: {{states.sensor.battery_capacity1.state}}'
+    title: Battery above 95
+  mode: single
+- id: '1648846237393'
+  alias: Battery above 70
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.battery_capacity1
+    above: '70'
+  condition: []
+  action:
+  - device_id: e55da39730293a0290b61e2b812bb1ed
+    domain: mobile_app
+    type: notify
+    message: 'Battery level: {{states.sensor.battery_capacity1.state}}'
+    title: Battery above 70
+  mode: single
+- id: '1648856670573'
+  alias: Battery below 40
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.battery_capacity1
+    below: '40'
+  condition: []
+  action:
+  - device_id: e55da39730293a0290b61e2b812bb1ed
+    domain: mobile_app
+    type: notify
+    message: 'Battery level: {{states.sensor.battery_capacity1.state}}'
+    title: Battery below 40
+  mode: single
+- id: '1648858805041'
+  alias: Battery Hourly
+  description: ''
+  trigger:
+  - platform: time_pattern
+    minutes: '30'
+  condition: []
+  action:
+  - device_id: e55da39730293a0290b61e2b812bb1ed
+    domain: mobile_app
+    type: notify
+    message: 'Battery level: {{states.sensor.battery_capacity1.state}}'
+    title: Battery Hourly
+  - device_id: 3ce0a4e24bfe774186ddb9fed0b2cb8b
+    domain: mobile_app
+    type: notify
+    message: 'Battery level: {{states.sensor.battery_capacity1.state}}'
+    title: Battery Hourly
+  mode: parallel
+- id: select_display_icon
+  alias: Select Display Icon
+  trigger:
+    platform: state
+    entity_id: input_select.display_image
+  action:
+    service: mqtt.publish
+    data_template:
+      topic: images/sensor/display1
+      payload: "{% if is_state(\"input_select.display_image\", \"Empty (Nothing)\"\
+        ) %}\n  Empty\n{% elif is_state(\"input_select.display_image\", \"FArrow (Foward\
+        \ Arrow)\") %}\n  arrow.png\n{% elif is_state(\"input_select.display_image\"\
+        , \"LArrow (Left Arrow)\") %}\n  arrow-left.png\n{% elif is_state(\"input_select.display_image\"\
+        , \"RArrow (Right Arrow)\") %}\n  arrow-right.png\n{% elif is_state(\"input_select.display_image\"\
+        , \"Electric (Electric Sign)\") %}\n  electric.png\n{% endif %}  \n"
+- id: set_solar_output_source
+  alias: Solar Trigger Output Source Change
+  trigger:
+    platform: state
+    entity_id: input_select.solar_output_source_priority
+  action:
+    service: mqtt.publish
+    data_template:
+      topic: homeassistant/sensor/voltronic
+      payload: "{% if is_state(\"input_select.solar_output_source_priority\", \"POP00\
+        \ (Utility first)\") %}\n  POP00\n{% elif is_state(\"input_select.solar_output_source_priority\"\
+        , \"POP01 (Solar first)\") %}\n  POP01\n{% elif is_state(\"input_select.solar_output_source_priority\"\
+        , \"POP02 (SBU)\") %}\n  POP02\n{% endif %}\n"
+- id: set_solar_charge_priority
+  alias: Stolar Trigger Charge Priority Change
+  trigger:
+    platform: state
+    entity_id: input_select.solar_charger_priority
+  action:
+    service: mqtt.publish
+    data_template:
+      topic: homeassistant/sensor/voltronic
+      payload: "{% if is_state(\"input_select.solar_charger_priority\", \"PCP00 (Utility\
+        \ first)\") %}\n  PCP00\n{% elif is_state(\"input_select.solar_charger_priority\"\
+        , \"PCP01 (Solar first)\") %}\n  PCP01\n{% elif is_state(\"input_select.solar_charger_priority\"\
+        , \"PCP02 (Solar and utility)\") %}\n  PCP02\n{% elif is_state(\"input_select.solar_charger_priority\"\
+        , \"PCP03 (Solar only)\") %}\n  PCP03\n{% endif %}\n"
+- id: switch_solar_only_charging_am
+  alias: Auto switch to "Solar Only" charging at Sunrise
+  trigger:
+  - event: sunrise
+    platform: sun
+    offset: 00:15:00
+  condition: []
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.solar_charger_priority
+      option: PCP01 (Solar first)
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.solar_output_source_priority
+      option: POP01 (Solar first)
+- id: switch_battery_late_evenings
+  alias: Switch to battery preferred output late evenings
+  trigger:
+  - at: 02:00
+    platform: time
+  condition: []
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.solar_output_source_priority
+      option: POP02 (SBU)
+- id: '1650490403178'
+  alias: Send MQTT Display 2
+  trigger:
+  - platform: state
+    entity_id: input_button.send_2
+  condition: []
+  action:
+  - service: mqtt.publish
+    data_template:
+      topic: images/display2
+      payload: "{{states.input_select.display_mode_2.state}} + {{states.input_select.display_image_2.state}}\
+        \ + {{states.input_number.rotation_2.state}} + {{states.input_number.speed_2.state}}\
+        \ + {{states.input_text.display_runtext_2.state}} \n"
+- id: '1651059609956'
+  alias: Fill Images List
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '1'
+  condition: []
+  action:
+  - service: input_select.set_options
+    data:
+      options:
+      - empty.png
+      - Enfermeria.png
+      - Flecha.png
+      - Prohibido-Beber.png
+      - Prohibido-Correr.png
+      - Prohibido-Entrar.png
+      - Prohibido-Fuego.png
+      - Prohibido-Fumar.png
+      - Prohibido-Pasar.png
+      - Prohibido.png
+      - Punto-Encuentro.png
+      - Riesgo-Biologico.png
+      - Riesgo-Electrico.png
+      - Riesgo-Explosion.png
+      - Riesgo-Fuego.png
+      - Riesgo-Laser.png
+      - Riesgo-Radioactivo.png
+      - Riesgo.png
+      - Salida-Barra.jpg
+      - Salida-Emergencia.jpg
+      - Salida.jpg
+    target:
+      entity_id:
+      - input_select.display_image_2
+      - input_select.display_image_3
+      - input_select.display_image_4
+      - input_select.display_image_5
+      - input_select.display_image_1
+  mode: single
+- id: '1651069533670'
+  alias: Fill Modes
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '1'
+  condition: []
+  action:
+  - service: input_select.set_options
+    data:
+      options:
+      - Clear
+      - Image-Blinking
+      - Image-Display
+      - Image-Scroller-Horizontal
+      - Image-Scroller-Vertical
+      - Runtext
+      - Clock
+      - Weather
+    target:
+      entity_id:
+      - input_select.display_mode_2
+      - input_select.display_mode_3
+      - input_select.display_mode_4
+      - input_select.display_mode_5
+      - input_select.display_mode_1
+  mode: single
+- id: '1652098123955'
+  alias: Send MQTT Display 1
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_button.send_1
+  condition: []
+  action:
+  - service: mqtt.publish
+    data_template:
+      topic: images/display1
+      payload: "{{states.input_select.display_mode_1.state}} + {{states.input_select.display_image_1.state}}\
+        \ + {{states.input_number.rotation_1.state}} + {{states.input_number.speed_1.state}}\
+        \ + {{states.input_text.display_runtext_1.state}} \n"
+  mode: single
