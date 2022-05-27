@@ -1,0 +1,79 @@
+{
+    "version": 1,
+    "minor_version": 2,
+    "key": "input_select",
+    "data": {
+        "items": [
+            {
+                "name": "Display Image ",
+                "options": [
+                    "Empty"
+                ],
+                "id": "display_image_1"
+            },
+            {
+                "name": "Display Mode 1",
+                "options": [
+                    "Empty "
+                ],
+                "id": "display_mode_1"
+            },
+            {
+                "name": "Display Image ",
+                "options": [
+                    "Empty"
+                ],
+                "id": "display_image_2"
+            },
+            {
+                "name": "Display Mode 2",
+                "options": [
+                    "Empty "
+                ],
+                "id": "display_mode_2"
+            },
+            {
+                "name": "Display Image ",
+                "options": [
+                    "Empty"
+                ],
+                "id": "display_image_3"
+            },
+            {
+                "name": "Display Mode 3",
+                "options": [
+                    "Empty "
+                ],
+                "id": "display_mode_3"
+            },
+            {
+                "name": "Display Image ",
+                "options": [
+                    "Empty"
+                ],
+                "id": "display_image_4"
+            },
+            {
+                "name": "Display Mode 4",
+                "options": [
+                    "Empty "
+                ],
+                "id": "display_mode_4"
+            },
+            {
+                "name": "Display Image ",
+                "options": [
+                    "Empty"
+                ],
+                "id": "display_image_5"
+            },
+            {
+                "name": "Display Mode 5",
+                "options": [
+                    "Empty "
+                ],
+                "id": "display_mode_5"
+            }
+        ]
+    }
+}

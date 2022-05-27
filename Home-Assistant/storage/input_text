@@ -1,0 +1,49 @@
+{
+    "version": 1,
+    "minor_version": 1,
+    "key": "input_text",
+    "data": {
+        "items": [
+            {
+                "name": "Display Runtext",
+                "icon": "mdi:form-textbox",
+                "max": 100,
+                "mode": "text",
+                "min": 0,
+                "id": "display_runtext_1"
+            },
+            {
+                "name": "Display Runtext",
+                "icon": "mdi:form-textbox",
+                "max": 100,
+                "mode": "text",
+                "min": 0,
+                "id": "display_runtext_2"
+            },
+            {
+                "name": "Display Runtext",
+                "icon": "mdi:form-textbox",
+                "max": 100,
+                "mode": "text",
+                "min": 0,
+                "id": "display_runtext_3"
+            },
+            {
+                "name": "Display Runtext",
+                "icon": "mdi:form-textbox",
+                "max": 100,
+                "mode": "text",
+                "min": 0,
+                "id": "display_runtext_4"
+            },
+            {
+                "name": "Display Runtext",
+                "icon": "mdi:form-textbox",
+                "max": 100,
+                "mode": "text",
+                "min": 0,
+                "id": "display_runtext_5"
+            }
+        ]
+    }
+}

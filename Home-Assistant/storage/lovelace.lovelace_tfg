@@ -1,0 +1,297 @@
+{
+    "version": 1,
+    "minor_version": 1,
+    "key": "lovelace.lovelace_tfg",
+    "data": {
+        "config": {
+            "resources": [
+                {
+                    "type": "js",
+                    "url": "/local/vertical-stack-in-card.js?v=0.1.2"
+                },
+                {
+                    "type": "module",
+                    "url": "/local/circle-sensor-card.js?v=0"
+                }
+            ],
+            "title": "Displays",
+            "views": [
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "cards": [
+                                {
+                                    "type": "entities",
+                                    "entities": [
+                                        {
+                                            "entity": "input_select.display_mode_1",
+                                            "icon": "mdi:card-outline"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "conditional",
+                                    "conditions": [
+                                        {
+                                            "entity": "input_select.display_mode_1",
+                                            "state": "Image-Blinking"
+                                        }
+                                    ],
+                                    "card": {
+                                        "type": "entities",
+                                        "entities": [
+                                            {
+                                                "entity": "input_select.display_image_1",
+                                                "icon": "mdi:camera-image"
+                                            },
+                                            {
+                                                "entity": "input_number.rotation_1"
+                                            },
+                                            {
+                                                "entity": "input_number.speed_1"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "conditional",
+                                    "conditions": [
+                                        {
+                                            "entity": "input_select.display_mode_1",
+                                            "state": "Image-Display"
+                                        }
+                                    ],
+                                    "card": {
+                                        "type": "entities",
+                                        "entities": [
+                                            {
+                                                "entity": "input_select.display_image_1",
+                                                "icon": "mdi:camera-image"
+                                            },
+                                            {
+                                                "entity": "input_number.rotation_1"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "conditional",
+                                    "conditions": [
+                                        {
+                                            "entity": "input_select.display_mode_1",
+                                            "state": "Image-Scroller-Horizontal"
+                                        }
+                                    ],
+                                    "card": {
+                                        "type": "entities",
+                                        "entities": [
+                                            {
+                                                "entity": "input_select.display_image_1",
+                                                "icon": "mdi:camera-image"
+                                            },
+                                            {
+                                                "entity": "input_number.rotation_1"
+                                            },
+                                            {
+                                                "entity": "input_number.speed_1"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "conditional",
+                                    "conditions": [
+                                        {
+                                            "entity": "input_select.display_mode_1",
+                                            "state": "Image-Scroller-Vertical"
+                                        }
+                                    ],
+                                    "card": {
+                                        "type": "entities",
+                                        "entities": [
+                                            {
+                                                "entity": "input_select.display_image_1",
+                                                "icon": "mdi:camera-image"
+                                            },
+                                            {
+                                                "entity": "input_number.rotation_1"
+                                            },
+                                            {
+                                                "entity": "input_number.speed_1"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "conditional",
+                                    "conditions": [
+                                        {
+                                            "entity": "input_select.display_mode_1",
+                                            "state": "Runtext"
+                                        }
+                                    ],
+                                    "card": {
+                                        "type": "entities",
+                                        "entities": [
+                                            {
+                                                "entity": "input_text.display_runtext_1"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "entities",
+                                    "entities": [
+                                        {
+                                            "entity": "input_button.send_1"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Display 1",
+                            "type": "custom:vertical-stack-in-card"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "type": "entities",
+                                    "entities": [
+                                        {
+                                            "entity": "input_select.display_mode_2",
+                                            "icon": "mdi:card-outline"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "conditional",
+                                    "conditions": [
+                                        {
+                                            "entity": "input_select.display_mode_2",
+                                            "state": "Image-Blinking"
+                                        }
+                                    ],
+                                    "card": {
+                                        "type": "entities",
+                                        "entities": [
+                                            {
+                                                "entity": "input_select.display_image_2",
+                                                "icon": "mdi:camera-image"
+                                            },
+                                            {
+                                                "entity": "input_number.rotation_2"
+                                            },
+                                            {
+                                                "entity": "input_number.speed_2"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "conditional",
+                                    "conditions": [
+                                        {
+                                            "entity": "input_select.display_mode_2",
+                                            "state": "Image-Display"
+                                        }
+                                    ],
+                                    "card": {
+                                        "type": "entities",
+                                        "entities": [
+                                            {
+                                                "entity": "input_select.display_image_2",
+                                                "icon": "mdi:camera-image"
+                                            },
+                                            {
+                                                "entity": "input_number.rotation_2"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "conditional",
+                                    "conditions": [
+                                        {
+                                            "entity": "input_select.display_mode_2",
+                                            "state": "Image-Scroller-Horizontal"
+                                        }
+                                    ],
+                                    "card": {
+                                        "type": "entities",
+                                        "entities": [
+                                            {
+                                                "entity": "input_select.display_image_2",
+                                                "icon": "mdi:camera-image"
+                                            },
+                                            {
+                                                "entity": "input_number.rotation_2"
+                                            },
+                                            {
+                                                "entity": "input_number.speed_2"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "conditional",
+                                    "conditions": [
+                                        {
+                                            "entity": "input_select.display_mode_2",
+                                            "state": "Image-Scroller-Vertical"
+                                        }
+                                    ],
+                                    "card": {
+                                        "type": "entities",
+                                        "entities": [
+                                            {
+                                                "entity": "input_select.display_image_2",
+                                                "icon": "mdi:camera-image"
+                                            },
+                                            {
+                                                "entity": "input_number.rotation_2"
+                                            },
+                                            {
+                                                "entity": "input_number.speed_2"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "conditional",
+                                    "conditions": [
+                                        {
+                                            "entity": "input_select.display_mode_2",
+                                            "state": "Runtext"
+                                        }
+                                    ],
+                                    "card": {
+                                        "type": "entities",
+                                        "entities": [
+                                            {
+                                                "entity": "input_text.display_runtext_2"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "entities",
+                                    "entities": [
+                                        {
+                                            "entity": "input_button.send_2"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Display 2",
+                            "type": "custom:vertical-stack-in-card"
+                        }
+                    ],
+                    "icon": "mdi:grid",
+                    "title": "Solar Configuration"
+                }
+            ]
+        }
+    }
+}

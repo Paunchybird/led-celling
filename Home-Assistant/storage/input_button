@@ -1,0 +1,39 @@
+{
+    "version": 1,
+    "minor_version": 1,
+    "key": "input_button",
+    "data": {
+        "items": [
+            {
+                "name": "Send ",
+                "icon": "mdi:send-circle-outline",
+                "id": "send_1"
+            },
+            {
+                "name": "Send",
+                "icon": "mdi:send-circle-outline",
+                "id": "send_2"
+            },
+            {
+                "name": "Send  ",
+                "icon": "mdi:send-circle-outline",
+                "id": "send_3"
+            },
+            {
+                "name": "Send   ",
+                "icon": "mdi:send-circle-outline",
+                "id": "send1_4"
+            },
+            {
+                "name": "Send   ",
+                "icon": "mdi:send-circle-outline",
+                "id": "send_5"
+            },
+            {
+                "name": "Send   ",
+                "icon": "mdi:send-circle-outline",
+                "id": "send_6"
+            }
+        ]
+    }
+}

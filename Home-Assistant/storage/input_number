@@ -1,0 +1,99 @@
+{
+    "version": 1,
+    "minor_version": 1,
+    "key": "input_number",
+    "data": {
+        "items": [
+            {
+                "min": 0.0,
+                "max": 360.0,
+                "name": "Rotation",
+                "icon": "mdi:rotate-3d-variant",
+                "step": 45.0,
+                "mode": "slider",
+                "id": "rotation_1"
+            },
+            {
+                "min": 0.0,
+                "max": 2.0,
+                "name": "Speed",
+                "icon": "mdi:speedometer",
+                "mode": "box",
+                "step": 0.01,
+                "id": "speed_1"
+            },
+            {
+                "min": 0.0,
+                "max": 360.0,
+                "name": "Rotation",
+                "icon": "mdi:rotate-3d-variant",
+                "step": 45.0,
+                "mode": "slider",
+                "id": "rotation_2"
+            },
+            {
+                "min": 0.0,
+                "max": 2.0,
+                "name": "Speed",
+                "icon": "mdi:speedometer",
+                "mode": "box",
+                "step": 0.01,
+                "id": "speed_2"
+            },
+            {
+                "min": 0.0,
+                "max": 360.0,
+                "name": "Rotation",
+                "icon": "mdi:rotate-3d-variant",
+                "step": 45.0,
+                "mode": "slider",
+                "id": "rotation_3"
+            },
+            {
+                "min": 0.0,
+                "max": 2.0,
+                "name": "Speed",
+                "icon": "mdi:speedometer",
+                "mode": "box",
+                "step": 0.01,
+                "id": "speed_3"
+            },
+            {
+                "min": 0.0,
+                "max": 360.0,
+                "name": "Rotation",
+                "icon": "mdi:rotate-3d-variant",
+                "step": 45.0,
+                "mode": "slider",
+                "id": "rotation_4"
+            },
+            {
+                "min": 0.0,
+                "max": 2.0,
+                "name": "Speed",
+                "icon": "mdi:speedometer",
+                "mode": "box",
+                "step": 0.01,
+                "id": "speed_4"
+            },
+            {
+                "min": 0.0,
+                "max": 360.0,
+                "name": "Rotation",
+                "icon": "mdi:rotate-3d-variant",
+                "step": 43.0,
+                "mode": "slider",
+                "id": "rotation_5"
+            },
+            {
+                "min": 0.0,
+                "max": 2.0,
+                "name": "Speed",
+                "icon": "mdi:speedometer",
+                "mode": "box",
+                "step": 0.01,
+                "id": "speed_5"
+            }
+        ]
+    }
+}
