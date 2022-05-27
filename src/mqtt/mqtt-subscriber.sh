@@ -17,7 +17,7 @@ while read rawcmd;
 do
 
     echo "Message recived: $rawcmd"
-    data=(${rawcmd// + / })
+    IFS='+'; data=($rawcmd); unset IFS;
     echo "${data[0]}.py" #Program
     echo "${data[1]}"    #Image
     echo "${data[2]%.*}"    #Rotation
@@ -39,8 +39,9 @@ do
         ;;
 
       Runtext.py)
-        TMP="$ROUTE/${data[0]}.py  -t  ${data[4]}" 
-        $TMP > /dev/null 2>&1 &
+        $ROUTE/${data[0]}.py  -t  "${data[4]}" > /dev/null 2>&1 &
+        #TMP="$ROUTE/${data[0]}.py  -t  "${data[4]}"" 
+        #$TMP #> /dev/null 2>&1 &
         ;;
       
       Weather.py)
@@ -51,7 +52,7 @@ do
         "$ROUTE/${data[0]}.py" > /dev/null 2>&1 &
         ;;
       *)
-        echo -n "unknown"
+        echo "nknown Program"
         ;;
     esac
 done < <(mosquitto_sub -h $SERVER -p $PORT -u "$USERNAME" -P "$PASSWORD" -i $CLIENTID -t "$TOPIC/$DEVICENAME" -q 1)
