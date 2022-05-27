@@ -3,12 +3,12 @@ version: '3'
 services:
   ceiling-led-panel:
     
-    #image: paunchybird/led-ceiling:new
+    image: paunchybird/led-ceiling:new
 
     # Uncomment to build local version
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
+   # build:
+    #  context: .
+     # dockerfile: Dockerfile.dev
 
 
     container_name: ceiling-led-panel
